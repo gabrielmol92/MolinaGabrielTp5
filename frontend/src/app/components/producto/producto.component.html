@@ -1,0 +1,36 @@
+<div class="container mx-auto" style="height:100px">
+    <p></p>
+    <ngx-typed-js [strings]="['Somos Jujuy Tecno','La tecnologia del Norte']" 
+    [loop] = 'true' [showCursor]='false' [fadeOut]="true"> 
+      
+       <h1 class="typing"></h1>
+     </ngx-typed-js>
+  
+  </div>
+   
+  
+   <div class="container row">  
+      <h2>Nuestros productos destacados</h2>
+      <div class="container row col-11 mx-auto">
+            <div class="card col-4 me-4 mb-4 shadow-lg bg-white" style="width:300px" *ngFor="let p of productos" >
+              <img class="card-img-top" src="{{p.imagen}}" alt="Card image">
+              <div class="card-body">
+                <h4 class="card-title">{{p.nombre}}</h4>
+                <p class="card-text">{{p.descripcion}}</p>
+                <p class="card-text">{{p.stock}} Unidades</p>
+              
+              </div>  
+              <div class="card-footer m-0 w-100">
+                  <p class="text-muted">$ {{p.precio}}</p>
+              </div> 
+              
+            </div> 
+      </div > 
+      <div class="container d-flex col-1 ">
+        <div class="vertical" (click)="agregarProducto()">
+          <img class="img-fluid img-agregar" src="assets/img/boton-agregar.png">
+        </div>
+      </div>
+    
+    </div>
+  
