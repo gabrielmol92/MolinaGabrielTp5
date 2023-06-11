@@ -11,7 +11,7 @@
   
    <div class="container row">  
       <h2>Nuestros productos destacados</h2>
-      <div class="container row col-11 mx-auto">
+      <div class="container row col mx-auto">
             <div class="card col-4 me-4 mb-4 shadow-lg bg-white" style="width:300px" *ngFor="let p of productos" >
               <img class="card-img-top" src="{{p.imagen}}" alt="Card image">
               <div class="card-body">
@@ -26,7 +26,7 @@
               
             </div> 
       </div > 
-      <div class="container d-flex col-1 ">
+      <div class="container d-flex col-auto">
         <div class="vertical" (click)="agregarProducto()">
           <img class="img-fluid img-agregar" src="assets/img/boton-agregar.png">
         </div>

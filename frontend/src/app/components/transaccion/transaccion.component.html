@@ -1,0 +1,37 @@
+<div class="form col-md-4 col-sm-12">
+    <form class="bg-light shadow border border-1">
+        <legend class="text-center">Conversor de divisas</legend>
+        <div class="m-2">
+            <label for="cantidad" class="form-label">Cantidad:</label>
+            <input type="text" class="form-control" id="cantidad" placeholder="" name="cantidad" [(ngModel)]="amount">
+          </div>
+           <div class="m-2">
+            <label for="Select" class="form-label">De:</label>
+            <select class="form-control" id="Select" placeholder="seleccione moneda" [(ngModel)]="from" [ngModelOptions]="{standalone: true}">
+                 
+                <option *ngFor="let moneda of monedas" [value]="moneda.symbol">{{moneda.name}}
+                <label for="" class="form-laber">{{ moneda.symbol}}</label>
+                </option>
+                
+             </select>   
+
+            </div>                 
+          <div class="m-2">
+            <label for="Select" class="form-label">A:</label>
+            <select class="form-control" id="Select" placeholder="seleccione moneda" [(ngModel)]="to" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let moneda of monedas" [value]="moneda.symbol">{{moneda.name}}
+                <label for="" class="form-laber">{{moneda.symbol}}</label>
+                </option>
+             </select>   
+            
+          </div> 
+
+          <div class="m-2">
+            <input type="number" class="form-control" placeholder={{resultado}} disabled>
+
+          </div>
+          
+        <button type="submit" class="btn btn-primary col-12" (click)="obtenerConversion()">Convertir</button>
+
+    </form>
+</div>

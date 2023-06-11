@@ -8,12 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
+import { TransaccionComponent } from './components/transaccion/transaccion.component';
+import { TransaccionGetComponent } from './components/transaccion-get/transaccion-get.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductoComponent,
-    ProductoFormComponent
+    ProductoFormComponent,
+    TransaccionComponent,
+    TransaccionGetComponent
   ],
   imports: [
     BrowserModule,

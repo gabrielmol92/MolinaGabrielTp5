@@ -17,7 +17,7 @@ export class ProductoFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  guardarTicket(){
+  guardarProducto(){
     this.productoService.createProducto(this.producto).subscribe(
       (result:any )=> {
         if(result.status == 1)
