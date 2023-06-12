@@ -16,6 +16,7 @@ export class TransaccionComponent implements OnInit {
   resultado: number;
   transaccion!: Transaccion;
 
+
  
   
   constructor(private transaccionService:TransaccionService) { 
@@ -26,6 +27,7 @@ export class TransaccionComponent implements OnInit {
    this.resultado = 0;
    this.obtenerMonedas();
    this.transaccion = new Transaccion();
+
   
 
   }
@@ -80,4 +82,9 @@ export class TransaccionComponent implements OnInit {
         alert(error.msg);
     })
    }
+
+   
+
+
+
 }

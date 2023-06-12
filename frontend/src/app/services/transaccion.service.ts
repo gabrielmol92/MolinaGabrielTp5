@@ -37,7 +37,7 @@ export class TransaccionService {
       
    }
 
-   createTransaction(transaccion : Transaccion): Observable<any>{
+   public createTransaction(transaccion : Transaccion): Observable<any>{
     let httpOption={
       headers: new HttpHeaders(
        {
@@ -53,7 +53,7 @@ export class TransaccionService {
    }
 
 
-   getTransacciones(): Observable<any>{
+   public getTransacciones(): Observable<any>{
     let httpOption={
       headers: new HttpHeaders(
        {
@@ -61,14 +61,28 @@ export class TransaccionService {
        }
       ),
       params: new HttpParams()
-    }
+     }
      return this._http.get(this.urlbase+"transaccion",httpOption)
- 
-   }
+    }
+  
+    public getTransaccionesPorFiltro(desde: string , hasta : string): Observable<any>{
+      let httpOption={
+        headers: new HttpHeaders(
+         {
+            
+         }
+        ),
+        params: new HttpParams().append("monedaOrigen",desde)
+                                .append("monedaDestino",hasta)
+       }
+       return this._http.get(this.urlbase+"transaccion/divisas",httpOption)
+    }
+    
+
+   
     
    }
 
-}
 
 
 
