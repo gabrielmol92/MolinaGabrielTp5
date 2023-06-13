@@ -10,6 +10,7 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 import { TransaccionComponent } from './components/transaccion/transaccion.component';
 import { TransaccionGetComponent } from './components/transaccion-get/transaccion-get.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TransaccionGetComponent } from './components/transaccion-get/transaccio
     ProductoComponent,
     ProductoFormComponent,
     TransaccionComponent,
-    TransaccionGetComponent
+    TransaccionGetComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,
