@@ -1,12 +1,12 @@
-  <div class="row">
+  <div class=" container row">
       <div class="col-4">
         <p>Ver todas las transacciones</p>
-         <button class="btn btn-primary" (click)="obtenerTransacciones()">Todas</button>
+         <button class="btn btn-primary" (click)="obtenerTransacciones()" (click)="mostrarTabla('tabla')">Todas</button>
       </div>
 
       <div class="col-4">
         <p>Filtar transacciones</p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#form">Filtro</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#form" (click)="ocultarTabla('tabla')">Filtro</button>
         <div id="form"  class="collapse">
             <form >
               <div class="m-2">
@@ -30,13 +30,13 @@
                 
               </div> 
             </form>
-            <button class="btn btn-primary" (click)="obtenerTransaccionesPorFiltro()">Buscar</button>
+            <button id="boton1" class="btn btn-primary" (click)="obtenerTransaccionesPorFiltro()" data-bs-toggle="collapse" data-bs-target="#form" (click)="mostrarTabla('tabla')">Buscar</button>
           </div>  
       </div>
   </div>
 
-  <div>
-     <table class="table table-striped">
+  <div  class="container">
+     <table  id="tabla" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Desde</th>

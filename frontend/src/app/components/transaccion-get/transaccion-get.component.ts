@@ -77,4 +77,14 @@ export class TransaccionGetComponent implements OnInit {
         })
     }  
 
+    public mostrarTabla(id : string){
+      let elemento = document.getElementById(id)!;
+      elemento.style.display = "inline-table";
+     }
+
+ 
+     public ocultarTabla(id : string){
+      let elemento = document.getElementById(id)!;
+      elemento.style.display = "none";
+    }
 }
