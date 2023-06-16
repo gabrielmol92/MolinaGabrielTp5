@@ -1,8 +1,9 @@
+import { Espectador } from "./espectador";
+
 export class Ticket {
     _id! : number;
-    dni!: string;
-    precioReal! : number;
-    tipoEspectador! : string;
-    fechaCobro! : Date;
-    precioCobrado! : number;
+    precioTicket!: number;
+    categoriaEspectador!: string;
+    fechaCompra!: string;
+    espectador!: Espectador;
 }

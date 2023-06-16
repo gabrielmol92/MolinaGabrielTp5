@@ -1,0 +1,55 @@
+
+
+<div class="container w-50 shadow-lg mb-4">
+
+    <div class="d-flex justify-content-center pb-4">
+      <h3>Formulario venta de Tickets</h3>
+    </div>
+    <form action="/action_page.php">
+
+        <div class="mb-3">
+           <label for="Select" class="form-label">De:</label>
+                <select class="form-control" id="Select" placeholder="seleccione moneda" [(ngModel)]="ticket.espectador" [ngModelOptions]="{standalone: true}">
+                     
+                    <option *ngFor="let e of espectadores" [value]="e._id">
+                    <label for="" class="form-laber">{{e.apellido}} {{ e.nombre}}</label>
+                    </option>
+                    
+                 </select>  
+        </div>
+          
+          <div class="mb-3">
+              <label for="precioReal" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="precioReal" placeholder="Ingrese precio" name="precioReal" [(ngModel)]="ticket.precioTicket">
+          </div>
+  
+          <div class="mb-3">
+            <label for="fechaCompra" class="form-label">Fecha Compra</label>
+            <input type="date" class="form-control" id="fechaCompra" placeholder="Ingrese Fecha" name="fechaCompra" [(ngModel)]="ticket.fechaCompra">
+        </div>
+  
+          <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo Espectador</label>
+               <select class="form-select" id="tipo" name="tipo"  [(ngModel)]="ticket.categoriaEspectador"> <!--(ngModelChange)="calcularDescuento()" -->
+                <option value="e">Extranjero</option>
+                <option value="l">Local</option>
+              </select>
+          </div>
+  
+          
+  
+          <div class="d-flex justify-content-center pb-4">
+              <button *ngIf="accion=='update'" type="submit" class="btn btn-secondary" (click)="modificarTicket()">
+                
+                <img class="img-fluid" src="assets/img/agregarticket.png"> Modificar</button>
+              <button  *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="guardarTicket()">
+                <img class="img-fluid" src="assets/img/agregarticket.png"> Agregar</button>
+                <button type="submit" class="btn btn-secondary ms-3" (click)="volverPagina()">
+                  <img class="img-fluid" src="assets/img/volver.png"> Volver</button>
+                
+          </div>
+  
+       </form>
+  
+  </div> 
+  
