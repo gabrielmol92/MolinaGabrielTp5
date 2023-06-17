@@ -12,6 +12,7 @@ import { TransaccionComponent } from './components/transaccion/transaccion.compo
 import { TransaccionGetComponent } from './components/transaccion-get/transaccion-get.component';
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
+import { LocalExtranjeroPipe } from './pipe/local-extranjero.pipe';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { TicketListComponent } from './components/ticket-list/ticket-list.compon
     TransaccionGetComponent,
     TicketFormComponent,
     TicketListComponent,
+    LocalExtranjeroPipe,
 
   ],
   imports: [

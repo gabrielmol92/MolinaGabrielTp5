@@ -39,7 +39,14 @@ export class TicketFormComponent implements OnInit {
   }
 
   cargarTicket(id : string){
-    //this.ticketService.getTicket()
+    this.ticketService.getTicket(id).subscribe(
+      result => {
+       Object.assign(this.ticket,result);
+    },
+    error=>{
+ 
+    }
+    )
   }
 
   cargarEspectadores(){
@@ -61,24 +68,35 @@ export class TicketFormComponent implements OnInit {
     
     this.ticketService.createTicket(this.ticket).subscribe(
       (result:any )=> {
-        if(result.status == 1)
+        if(result.status == 1){
          alert(result.msg);
+         this.ticket = new Ticket();
+        }
     },
     error => { 
         alert(error.msg);
-    })
-    setTimeout(() => {
-     // this.router.navigate(["ticket-list"]); 
-    }, 2000);
 
+    })
   }
   
   volverPagina(){
-
+    this.router.navigate(["ticket-list"])
   }
 
   modificarTicket(){
+    this.ticketService.editTicket(this.ticket).subscribe(
+      (result:any )=> {
+        if(result.status == 1){
+         alert(result.msg);
+         this.ticket = new Ticket();
+        }
+        this.router.navigate(["ticket-list"]);
+    },
+    error => { 
+        alert(error.msg);
 
+    })
+   
   }
 
 }
