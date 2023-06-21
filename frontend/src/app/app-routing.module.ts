@@ -13,7 +13,10 @@ const routes: Routes = [
   {path: 'transaccion', component: TransaccionComponent},
   {path: 'transaccion-get', component: TransaccionGetComponent},
   {path: 'ticket/:id', component: TicketFormComponent},
-  {path: 'ticket-list', component: TicketListComponent}
+  {path: 'ticket-list', component: TicketListComponent},
+  {path: '', redirectTo: '/producto', pathMatch: 'full'}
+
+
 
 
 ];
