@@ -1,0 +1,33 @@
+html {
+    min-height: 100%;
+    position: relative;
+  }
+
+.card-body p {
+    font-size:1rem;
+    text-decoration: none;
+}
+
+.card-footer {
+    background-color: #fff;
+    border-top: none;
+}
+
+.card-footer p {
+    font-size:1rem;
+    
+}
+
+.vertical{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.img-agregar:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    
+}
+
+

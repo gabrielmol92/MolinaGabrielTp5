@@ -1,0 +1,139 @@
+<div class="container w-50 shadow-lg mb-4 divc">
+
+    <div class="d-flex justify-content-center pb-4">
+      <h3>Formulario Alta de Productos</h3>
+    </div>
+    <form action="/action_page.php" #productoForm="ngForm" class="was-validated" >
+          <div class="mb-3 mt-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre del Producto" name="nombre" [(ngModel)]="producto.nombre" 
+            required minlength="3" #nombre="ngModel">
+
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+            class="invalid-feedback">
+           
+            <div *ngIf="nombre.errors?.['required']">
+            Nombre es requerido.
+            </div>
+            <div *ngIf="nombre.errors?.['minlength']">
+            Nombre debe tener al menos 3 caracteres.
+            </div>
+            </div> 
+
+          </div>
+          
+          <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripcion</label>
+              <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripción" name="descripcion" [(ngModel)]="producto.descripcion"
+              required minlength="8" #descripcion="ngModel">
+         
+              <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)"
+              class="invalid-feedback">
+             
+              <div *ngIf="descripcion.errors?.['required']">
+              Descripcion es requerido.
+              </div>
+              <div *ngIf="descripcion.errors?.['minlength']">
+              Descripcion debe tener al menos 8 caracteres.
+              </div>
+              </div>  
+         
+         
+           </div>
+
+  
+          <div class="mb-3">
+              <label for="imagen" class="form-label">Imagen</label>
+              <input type="text" class="form-control" id="imagen" placeholder="Ingrese URL de imagen" name="imagen" [(ngModel)]="producto.imagen"
+             required minlength="3" #imagen="ngModel">
+
+             <div *ngIf="imagen.invalid && (imagen.dirty || imagen.touched)"
+             class="invalid-feedback">
+            
+                <div *ngIf="imagen.errors?.['required']">
+                   Imagen es requerido.
+               </div>
+               <div *ngIf="imagen.errors?.['minlength']">
+                 Imagen debe tener al menos 3 caracteres.
+               </div>
+             </div> 
+
+          </div>
+
+          <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" class="form-control" id="precio" placeholder="Ingrese precio" name="precio" [(ngModel)]="producto.precio" 
+            #precio="ngModel" required pattern="^[0-9]+\.[0-9][0-9]$">
+
+            <div *ngIf="precio.invalid && (precio.dirty || precio.touched)"
+            class="invalid-feedback"> 
+           
+               <div *ngIf="precio.errors?.['required']">
+                  Precio es requerido.
+              </div>
+            
+
+              <div *ngIf="precio.errors?.['pattern']">
+                Ingrese un numero con dos decimales
+              </div>
+            
+
+            </div> 
+
+          </div>
+
+          <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" placeholder="Ingrese stock inicial" name="stock" [(ngModel)]="producto.stock"
+            required min="3" #stock="ngModel">
+          
+
+            <div *ngIf="stock.invalid && (stock.dirty || stock.touched)"
+            class="invalid-feedback">
+           
+               <div *ngIf="stock.errors?.['required']">
+                  Stock es requerido.
+              </div>
+              <div *ngIf="stock.errors?.['min']">
+                El stock minimo es 3
+              </div>
+            
+
+            </div> 
+
+          </div>
+
+          
+         <div class="mb-3">
+          <label for="destacado" class="form-label">Destacado</label>
+          <select class="form-select" id="destacado" name="destacado" [(ngModel)]="producto.destacado"
+          required #destacado="ngModel">
+            <option value="true">Si</option>
+            <option value="false">No</option>
+          </select>
+
+          <div *ngIf="destacado.invalid && (destacado.dirty || destacado.touched)"
+          class="invalid-feedback">
+         
+             <div *ngIf="destacado.errors?.['required']">
+                Destacado es requerido.
+            </div>
+           
+          
+
+          </div> 
+
+        </div>
+  
+          <div class="d-flex justify-content-center pb-4">
+              <button   type="submit" class="btn btn-primary" (click)="guardarProducto()" 
+              [disabled]="productoForm.invalid">
+                <img class="img-fluid" src="assets/img/agregar.png"> Agregar</button>
+                <button type="submit" class="btn btn-secondary ms-3" (click)="volverPagina()">
+                  <img class="img-fluid" src="assets/img/volver.png"> Volver</button>
+                
+          </div>
+  
+       </form>
+  
+  </div> 

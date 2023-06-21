@@ -1,0 +1,69 @@
+
+<div class="container-fluid bg-light pt-4 divc ">
+    <div class="d-flex justify-content-center">
+      <h2>Registro de Tickets vendidos</h2>
+    </div>
+    <div class="d-flex justify-content-center mt-2">
+      <button class="btn btn-primary m-3" (click)="agregarTicket()">
+        <img clas="img-fluid" src="assets/img/agregarticket.png"> Agregar Ticket
+      </button>
+    </div>
+  
+    <div class="container d-flex ">
+      <button class="btn btn-primary m-3" (click)="obtenerTodosLosTickets()" (click)="mostrarTabla('tabla')">
+        <img clas="img-fluid" src="assets/img/agregarticket.png">Ver Todos
+      </button>
+
+      <button type="button" class="btn btn-primary m-3" data-bs-toggle="collapse" data-bs-target="#form" (click)="ocultarTabla('tabla')">
+        <img clas="img-fluid" src="assets/img/agregarticket.png"> Filtro
+      </button>
+      <div id="form"  class="collapse">
+        <form >
+          <div class="d-inline-flex justify-content-center" >
+            <label for="Select" class="form-label">De:</label>
+            <select class="form-control m-3" id="Select" placeholder="seleccione moneda" [(ngModel)]="categoria" [ngModelOptions]="{standalone: true}">   
+               <option value="e">Extranjero</option>
+               <option value="l">Local</option>   
+            </select> 
+            <button id="boton1" class="btn btn-primary m-3" (click)="obtenerTicketsPorFiltro()" data-bs-toggle="collapse" data-bs-target="#form" (click)="mostrarTabla('tabla')">Buscar</button>
+          </div>                 
+        
+        </form>
+       
+      </div>  
+
+
+
+    </div>
+
+      <div class="container shadow  bg-white text-center">
+            <table id="tabla" class="table table-hover" >
+                <thead class="table-dark">
+                  <tr>
+                    
+                    <th>Precio Ticket</th>
+                    <th>Categoria Espectador Espectador</th>
+                    <th>Fecha Compra</th>
+                    <th>Espectador</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let t of ticketList">
+                    <td>{{t.precioTicket}}</td>
+                    <td>{{t.categoriaEspectador | localExtranjero}}</td>
+                    <td>{{t.fechaCompra | date: 'dd/MM/yyyy' : "es-AR"}}</td>
+                    <td>{{t.espectador.nombre}} {{t.espectador.apellido}}</td>  
+                    <td>
+                      <button type="submit" class="btn btn-primary me-1 " (click)="modificarTicketA(t)">
+                        <img class="img-fluid" src="assets/img/editar.png"> Modificar</button>
+                      <button type="submit" class="btn btn-danger ms-1" (click)="eliminarTicket(t)" type="submit">
+                        <img class="img-fluid" src="assets/img/eliminar.png"> Eliminar</button>
+                    </td>
+                </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+      
+  </div>

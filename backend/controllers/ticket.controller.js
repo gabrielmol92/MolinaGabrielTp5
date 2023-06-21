@@ -69,7 +69,7 @@ ticketCtrl.editTicket = async (req, res) => {
     criterio.categoriaEspectador = req.query.categoriaEspectador;
   }
 
-  var tickets = await Ticket.find(criterio);
+  var tickets = await Ticket.find(criterio).populate("espectador");
   res.json(tickets);
 };
 

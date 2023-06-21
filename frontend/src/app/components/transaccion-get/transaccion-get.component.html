@@ -1,0 +1,63 @@
+   <div class="divc">
+     <div class=" container row ">
+          <div class="col-4">
+            <h4>Ver todas las transacciones</h4>
+            <button class="btn btn-primary" (click)="obtenerTransacciones()" (click)="mostrarTabla('tabla')">Todas</button>
+          </div>
+
+          <div class="col-4">
+            <h4>Filtar transacciones</h4>
+            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#form" (click)="ocultarTabla('tabla')">Filtro</button>
+            <div id="form"  class="collapse">
+                <form >
+                  <div class="m-2">
+                    <label for="Select" class="form-label">De:</label>
+                    <select class="form-control" id="Select" placeholder="seleccione moneda" [(ngModel)]="desde" [ngModelOptions]="{standalone: true}">
+                        
+                        <option *ngFor="let moneda of monedas" [value]="moneda.symbol">
+                        <label for="" class="form-laber">{{ moneda.symbol}}</label>
+                        </option>
+                        
+                    </select>   
+        
+                    </div>                 
+                  <div class="m-2">
+                    <label for="Select" class="form-label">A:</label>
+                    <select class="form-control" id="Select" placeholder="seleccione moneda" [(ngModel)]="hasta" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let moneda of monedas" [value]="moneda.symbol">
+                        <label for="" class="form-laber">{{moneda.symbol}}</label>
+                        </option>
+                    </select>   
+                    
+                  </div> 
+                </form>
+                <button id="boton1" class="btn btn-primary" (click)="obtenerTransaccionesPorFiltro()" data-bs-toggle="collapse" data-bs-target="#form" (click)="mostrarTabla('tabla')">Buscar</button>
+              </div>  
+          </div>
+      </div>
+
+      <div  class="container">
+        <table  id="tabla" class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Desde</th>
+                <th scope="col">A</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Resultado</th>
+                <th scope="col">Tasa Conversion</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let t of transacciones" >
+                <td>{{t.monedaOrigen}}</td>
+                <td>{{t.monedaDestino}}</td>
+                <td>{{t.cantidadOrigen}}</td>
+                <td>{{t.cantidadDestino.toFixed(2)}}</td>
+                <td>{{t.tasaConversion.toFixed(4)}}</td>
+                <td>{{t.emailCliente}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>      

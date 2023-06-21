@@ -1,0 +1,105 @@
+
+
+<div class="container w-50 shadow-lg mb-4 divc">
+
+    <div class="d-flex justify-content-center pb-4">
+      <h3>Formulario venta de Tickets</h3>
+    </div>
+    <form action="/action_page.php" class="was-validated" #ticketForm="ngForm">
+
+        <div class="mb-3">
+           <label for="Select" class="form-label">De:</label>
+                <select class="form-control" id="Select" placeholder="Seleccione espectador" [(ngModel)]="ticket.espectador" [ngModelOptions]="{standalone: true}"
+                required #espectador="ngModel">
+                     
+                    <option *ngFor="let e of espectadores" [value]="e._id">
+                    <label for="" class="form-laber">{{e.apellido}} {{ e.nombre}}</label>
+                    </option>
+                    
+                 </select>  
+
+                 
+            <div *ngIf="espectador.invalid && (espectador.dirty || espectador.touched)"
+                  class="invalid-feedback">
+         
+             <div *ngIf="espectador.errors?.['required']">
+                El espectador es requerido.
+            </div>
+           
+          
+
+          </div> 
+        </div>
+          
+          <div class="mb-3">
+              <label for="precioTicket" class="form-label">Precio</label>
+              <input type="number" class="form-control" id="precioTicket" placeholder="Ingrese precio" name="precioReal" [(ngModel)]="ticket.precioTicket"
+              required  #precioTicket="ngModel" min="500">
+
+              <div *ngIf="precioTicket.invalid && (precioTicket.dirty || precioTicket.touched)"
+              class="invalid-feedback">
+                 <div *ngIf="precioTicket.errors?.['required']">
+                    precio es requerido.
+                </div>
+                <div *ngIf="precioTicket.errors?.['min']">
+                  El precio minimo es 500
+                </div>
+              </div> 
+         
+          </div>
+  
+          <div class="mb-3">
+            <label for="fechaCompra" class="form-label">Fecha Compra</label>
+            <input type="date" class="form-control" id="fechaCompra" placeholder="Ingrese Fecha" name="fechaCompra" [(ngModel)]="ticket.fechaCompra"
+             required  #fechaCompra="ngModel"  >
+              
+             <div *ngIf="fechaCompra.invalid && (fechaCompra.dirty || fechaCompra.touched)"
+              class="invalid-feedback">
+    
+               <div *ngIf="fechaCompra.errors?.['required']">
+                La fecha es requerida.
+               </div>
+             </div> 
+
+            </div>
+  
+          <div class="mb-3">
+              <label for="tipo" class="form-label">Tipo Espectador</label>
+               <select class="form-select" id="tipo" name="tipo"  [(ngModel)]="ticket.categoriaEspectador" 
+               required #categoriaEspectador="ngModel"> 
+                <option value="e">Extranjero</option>
+                <option value="l">Local</option>
+              </select>
+
+
+              <div *ngIf="categoriaEspectador.invalid && (categoriaEspectador.dirty || categoriaEspectador.touched)"
+              class="invalid-feedback">
+     
+                <div *ngIf="categoriaEspectador.errors?.['required']">
+                  La categoria es requerida.
+               </div>
+          
+      
+
+      </div> 
+
+
+          </div>
+  
+          
+  
+          <div class="d-flex justify-content-center pb-4">
+              <button *ngIf="accion=='update'" type="submit" class="btn btn-secondary" [disabled]="ticketForm.invalid" (click)="modificarTicket()">
+                
+                <img class="img-fluid" src="assets/img/agregarticket.png"> Modificar</button>
+              <button  *ngIf="accion=='new'" type="submit" class="btn btn-primary" [disabled]="ticketForm.invalid" (click)="guardarTicket()">
+                <img class="img-fluid" src="assets/img/agregarticket.png"> Agregar</button>
+                <button type="submit" class="btn btn-secondary ms-3" (click)="volverPagina()">
+                  <img class="img-fluid" src="assets/img/volver.png"> Volver</button>
+                
+          </div>
+  
+       </form>
+  
+  </div> 
+  
