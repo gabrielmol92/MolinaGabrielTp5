@@ -60,10 +60,11 @@ export class TransaccionComponent implements OnInit {
       this.transaccion.cantidadOrigen = this.amount;
       this.transaccion.monedaDestino = this.to;
       this.transaccion.cantidadDestino = this.resultado;
-      this.transaccion.emailCliente = "gabriel@gmail.com";
+      this.transaccion.emailCliente = "gabrielmolina8021@gmail.com";
       this.transaccion.tasaConversion = this.amount / this.resultado;
      // this.transaccionService.createTransaction(this.transaccion);
-     this.guardarTicket();
+      this.guardarTicket();
+      
     },
      error => {
       console.log(error);
@@ -77,6 +78,7 @@ export class TransaccionComponent implements OnInit {
       (result:any )=> {
         if(result.status == 1)
          alert(result.msg);
+        this.transaccion = new Transaccion();
     },
     error => { 
         alert(error.msg);

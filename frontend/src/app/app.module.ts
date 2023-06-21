@@ -14,6 +14,8 @@ import { TicketFormComponent } from './components/ticket-form/ticket-form.compon
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { LocalExtranjeroPipe } from './pipe/local-extranjero.pipe';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 
 
@@ -29,6 +31,8 @@ import { HeaderComponent } from './components/header/header.component';
     TicketListComponent,
     LocalExtranjeroPipe,
     HeaderComponent,
+    FooterComponent,
+
    
 
 

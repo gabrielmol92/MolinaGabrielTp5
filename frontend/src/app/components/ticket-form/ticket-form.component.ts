@@ -14,6 +14,7 @@ export class TicketFormComponent implements OnInit {
   ticket  : Ticket  =new Ticket();
   espectadores!: Array<Espectador>;
   accion : string = "new";
+
   
 
 

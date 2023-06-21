@@ -22,15 +22,11 @@ export class ProductoFormComponent implements OnInit {
       (result:any )=> {
         if(result.status == 1)
          alert(result.msg);
+         this.producto = new Producto();
     },
     error => { 
         alert(error.msg);
     })
-    setTimeout(() => {
-      this.router.navigate(["producto"]); 
-    }, 2000);
-
-
   }
 
   volverPagina(){
