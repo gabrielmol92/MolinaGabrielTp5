@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Transaccion } from 'src/app/models/transaccion';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 
@@ -19,7 +20,7 @@ export class TransaccionComponent implements OnInit {
 
  
   
-  constructor(private transaccionService:TransaccionService) { 
+  constructor(private transaccionService:TransaccionService, private toastr : ToastrService) { 
    this.monedas = [];
    this.amount=0;
    this.from="";
@@ -63,7 +64,7 @@ export class TransaccionComponent implements OnInit {
       this.transaccion.emailCliente = "gabrielmolina8021@gmail.com";
       this.transaccion.tasaConversion = this.amount / this.resultado;
      // this.transaccionService.createTransaction(this.transaccion);
-      this.guardarTicket();
+      this.guardarTransaccion();
       
     },
      error => {
@@ -73,11 +74,11 @@ export class TransaccionComponent implements OnInit {
      
   }
 
-  guardarTicket(){
+  guardarTransaccion(){
     this.transaccionService.createTransaction(this.transaccion).subscribe(
       (result:any )=> {
         if(result.status == 1)
-         alert(result.msg);
+        this.toastr.success("Transaccion correcta")
         this.transaccion = new Transaccion();
     },
     error => { 

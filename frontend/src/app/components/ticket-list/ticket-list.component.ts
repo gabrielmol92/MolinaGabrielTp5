@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketService } from 'src/app/services/ticket.service';
 
@@ -16,7 +17,8 @@ export class TicketListComponent implements OnInit {
   ticketList : Array<Ticket>;
 
   constructor(private ticketService : TicketService,
-             private router : Router) { 
+             private router : Router,
+             private toastr : ToastrService) { 
   this.ticketList = new Array<Ticket>();
   this.categoria = "";
   // this.obtenerTodosLosTickets();
@@ -55,7 +57,7 @@ export class TicketListComponent implements OnInit {
       (result:any )=> {
           if(result.status == 1)
             {
-              alert(result.msg);  
+              this.toastr.warning("Ticket borrado!")
               let indexTicket:number = this.ticketList.findIndex(t => (t._id === ticket._id));
               this.ticketList.splice(indexTicket,1);
             }

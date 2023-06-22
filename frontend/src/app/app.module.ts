@@ -15,6 +15,9 @@ import { TicketListComponent } from './components/ticket-list/ticket-list.compon
 import { LocalExtranjeroPipe } from './pipe/local-extranjero.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -42,7 +45,11 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxTypedJsModule
+    NgxTypedJsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
   
   ],
   providers: [],

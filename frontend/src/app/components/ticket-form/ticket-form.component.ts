@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Espectador } from 'src/app/models/espectador';
 import { Ticket } from 'src/app/models/ticket';
 import { EspectadorService } from 'src/app/services/espectador.service';
@@ -21,7 +22,8 @@ export class TicketFormComponent implements OnInit {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private ticketService : TicketService,
-              private espectadorService : EspectadorService) { 
+              private espectadorService : EspectadorService,
+              private toastr : ToastrService) { 
 
  this.espectadores = new Array<Espectador>();
  this.cargarEspectadores();               
@@ -70,7 +72,8 @@ export class TicketFormComponent implements OnInit {
     this.ticketService.createTicket(this.ticket).subscribe(
       (result:any )=> {
         if(result.status == 1){
-         alert(result.msg);
+         //alert(result.msg);
+         this.toastr.success("Ticker vendido correctamente")
          this.ticket = new Ticket();
         }
     },
@@ -88,7 +91,7 @@ export class TicketFormComponent implements OnInit {
     this.ticketService.editTicket(this.ticket).subscribe(
       (result:any )=> {
         if(result.status == 1){
-         alert(result.msg);
+          this.toastr.success("Ticker modificado correctamente")
          this.ticket = new Ticket();
         }
         this.router.navigate(["ticket-list"]);
